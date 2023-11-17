@@ -54,7 +54,7 @@ class MSSQLServerPlugin implements AmplicationPlugin {
       fieldName: string
     ) => `${fieldType} (list of primitives type) on entity: ${entityName}, field: ${fieldName}, is not supported by SQL Server prisma provider. 
     You can select another data type or change your DB to PostgreSQL`;
-
+      const amit = "amit"
     const generateErrorMessageForJson = (
       entityName: string,
       fieldName: string
