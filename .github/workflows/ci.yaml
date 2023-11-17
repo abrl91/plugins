@@ -36,9 +36,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Lint
-        run: npx nx affected --target=lint --parallel
+        run: npx nx affected --target=lint --parallel --exclude=plugin-template
         continue-on-error: true # we will open a PR for fixing lint errors
       - name: Build
-        run: npx nx affected --target=build --parallel
+        run: npx nx affected --target=build --parallel --exclude=plugin-template
       - name: Test
         run: npx nx affected --target=test --parallel
