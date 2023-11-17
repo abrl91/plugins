@@ -34,24 +34,12 @@ jobs:
           ref: ${{ inputs.nx-head }}
           filter: blob:none
 
-      - uses: nrwl/nx-set-shas@v3
-        if: inputs.nx-force-all == false
+      - uses: nrwl/nx-set-shas@v4
         with:
           main-branch-name: ${{ inputs.nx-base }}
 
       - name: Setup Bun Runtime
-        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         uses: oven-sh/setup-bun@v1
-
-      - name: Cache
-        id: cache
-        uses: actions/cache@v3
-        env:
-          cache-name: cache
-        with:
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
-          path: |
-            ~/.bun/install/cache
 
       - name: Install Dependencies
         run: bun i --lockfile package-lock.json

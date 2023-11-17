@@ -55,7 +55,7 @@ jobs:
     uses: ./.github/workflows/nx.template.yaml
     with:
       nx-head: ${{ github.head_ref && format('refs/pull/{0}/merge', github.event.number) || github.ref_name  }}
-      nx-base: ${{ github.base_ref || inputs.nx-base || github.event.repository.default_branch }}
+      nx-base: ${{ github.base_ref || github.event.repository.default_branch }}
 
   publish:
     name: Publish
