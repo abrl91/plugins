@@ -48,7 +48,7 @@ jobs:
 
       # if the branch is not the default branch, the beta tag is applied
       - name: Publish package on NPM [beta] 📦
-        if: ${{ inputs.event }} == pull_request
+        if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
         run: |
           VERSION=$(cat package-lock.json | jq -r '.version')
           SHORT_SHA=$(echo ${{ inputs.commit-sha }} | cut -c1-7)
