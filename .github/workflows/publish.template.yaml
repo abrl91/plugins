@@ -19,10 +19,15 @@ on:
         type: string
         description: The base sha
         required: true
+      publish:
+        type: boolean
+        description: Flag to indicate whether to run the publish job
+        required: false
+        default: false
 
 jobs:
   publish:
-    if: ${{ inputs.event == 'publish' }}
+    if: ${{ inputs.publish }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
