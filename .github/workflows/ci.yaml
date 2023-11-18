@@ -49,13 +49,6 @@ jobs:
         run: npx nx affected --target=test --parallel
         continue-on-error: true # we will open a PR for fixing test errors
 
-      - name: Echo with parameters
-        run: |
-          echo "Affected Plugin: ${{ inputs.affected-plugin }}"
-          echo "Event: ${{ inputs.event }}"
-          echo "PR Number: ${{ inputs.pr-number }}"
-          echo "Commit SHA: ${{ inputs.commit-sha }}"
-
   nx:
     name: Nx
     needs: ci
@@ -75,4 +68,4 @@ jobs:
       affected-plugin: ${{ matrix.affected-plugin }}
       event: ${{ github.event.pull_request.number }}
       pr-number: ${{ github.event.number }}
-      commit-sha: ${{ github.event.pull_request.head.sha }} 
+      commit-sha: ${{ github.event.pull_request.head.sha }}

@@ -38,6 +38,13 @@ jobs:
         run: npm ci && npm run build
         working-directory: plugins/${{ inputs.affected-plugin }}
 
+      - name: Echo with parameters
+        run: |
+          echo "Affected Plugin: ${{ inputs.affected-plugin }}"
+          echo "Event: ${{ inputs.event }}"
+          echo "PR Number: ${{ inputs.pr-number }}"
+          echo "Commit SHA: ${{ inputs.commit-sha }}"
+
       # if the branch is the default branch, the latest tag is applied
       - name: Publish package on NPM [latest] 📦
         if: ${{ inputs.event }} == commit
