@@ -22,7 +22,6 @@ on:
 
 jobs:
   publish:
-    if: ${{ github.event.inputs.publish }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
